@@ -1,0 +1,448 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #05030d;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#game {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at center,
+            #21113f 0%,
+            #0c0718 45%,
+            #030207 100%
+        );
+}
+
+canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* ===============================
+   HUD
+================================ */
+
+.hud {
+    position: absolute;
+
+    top: 18px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 20;
+
+    width: min(1100px, 94vw);
+
+    min-height: 65px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 12px 18px;
+
+    background: rgba(9, 6, 20, 0.82);
+
+    border: 1px solid rgba(180, 120, 255, 0.22);
+
+    border-radius: 14px;
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, .35);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    margin-right: auto;
+}
+
+.logo {
+    color: #b875ff;
+    font-size: 22px;
+}
+
+.hud-item {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+
+    min-width: 75px;
+}
+
+.hud-item span {
+    color: #847a9c;
+
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+
+    font-weight: bold;
+}
+
+.hud-item strong {
+    color: #eee8ff;
+
+    font-size: 17px;
+}
+
+.hearts {
+    color: #ff5577;
+
+    font-size: 15px;
+
+    letter-spacing: 3px;
+
+    white-space: nowrap;
+}
+
+.energy-wrap {
+    width: 100px;
+    height: 7px;
+
+    background: #211a30;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+#energyBar {
+    height: 100%;
+
+    width: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7654ff,
+            #c56aff
+        );
+
+    border-radius: inherit;
+
+    transition: width .15s;
+}
+
+.timer strong {
+    color: #d79cff;
+}
+
+
+/* ===============================
+   SCREENS
+================================ */
+
+.screen {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 50;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(38, 15, 70, .72),
+            rgba(3, 2, 8, .95)
+        );
+
+    backdrop-filter: blur(8px);
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* ===============================
+   MENU
+================================ */
+
+.menu {
+    width: min(520px, 90vw);
+
+    padding: 50px 40px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(25, 14, 42, .96),
+            rgba(9, 6, 18, .97)
+        );
+
+    border: 1px solid rgba(190, 125, 255, .25);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, .6);
+}
+
+.title-symbol {
+    font-size: 65px;
+
+    color: #b36cff;
+
+    text-shadow:
+        0 0 35px #9d4edd;
+
+    margin-bottom: 10px;
+}
+
+.menu h1 {
+    font-size: 42px;
+
+    letter-spacing: 8px;
+
+    color: #f7efff;
+
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #9b8aaa;
+
+    font-size: 14px;
+
+    margin-bottom: 35px;
+}
+
+
+/* ===============================
+   INSTRUCTIONS
+================================ */
+
+.instructions {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-bottom: 35px;
+}
+
+.instructions div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    width: 100px;
+
+    padding: 14px 8px;
+
+    background: #100b1c;
+
+    border: 1px solid #2b203a;
+
+    border-radius: 10px;
+}
+
+.instructions b {
+    color: #d7b2ff;
+
+    font-size: 13px;
+}
+
+.instructions span {
+    color: #71687e;
+
+    font-size: 10px;
+}
+
+
+/* ===============================
+   BUTTON
+================================ */
+
+button {
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7847d8,
+            #a653db
+        );
+
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(137, 70, 220, .25);
+
+    transition: .2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 15px 35px rgba(137, 70, 220, .4);
+}
+
+
+/* ===============================
+   FINAL SCORE
+================================ */
+
+.final-score {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin: 25px 0;
+}
+
+.final-score span {
+    color: #71687e;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+.final-score strong {
+    color: #dca6ff;
+
+    font-size: 48px;
+}
+
+
+/* ===============================
+   NOTIFICATION
+================================ */
+
+#notification {
+    position: absolute;
+
+    z-index: 40;
+
+    top: 105px;
+
+    left: 50%;
+
+    transform: translateX(-50%) translateY(-15px);
+
+    padding: 10px 20px;
+
+    border-radius: 30px;
+
+    background: rgba(20, 10, 35, .9);
+
+    border: 1px solid #7242a5;
+
+    color: #e9d5ff;
+
+    font-size: 12px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: .3s;
+}
+
+#notification.show {
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+/* ===============================
+   MOBILE
+================================ */
+
+@media(max-width: 700px) {
+
+    .hud {
+        gap: 10px;
+
+        padding: 10px;
+    }
+
+    .brand {
+        display: none;
+    }
+
+    .hud-item {
+        min-width: auto;
+    }
+
+    .energy-wrap {
+        width: 65px;
+    }
+
+    .menu {
+        padding: 35px 20px;
+    }
+
+    .menu h1 {
+        font-size: 32px;
+
+        letter-spacing: 5px;
+    }
+
+    .instructions {
+        gap: 7px;
+    }
+
+}

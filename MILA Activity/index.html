@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIME RIFT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="game">
+
+        <!-- HUD -->
+        <div class="hud">
+
+            <div class="brand">
+                <span class="logo">◈</span>
+                <span>TIME RIFT</span>
+            </div>
+
+            <div class="hud-item">
+                <span>HEALTH</span>
+                <div class="hearts" id="hearts">
+                    ♥ ♥ ♥
+                </div>
+            </div>
+
+            <div class="hud-item">
+                <span>ENERGY</span>
+                <div class="energy-wrap">
+                    <div id="energyBar"></div>
+                </div>
+            </div>
+
+            <div class="hud-item">
+                <span>SHARDS</span>
+                <strong id="shards">0</strong>
+            </div>
+
+            <div class="hud-item">
+                <span>SCORE</span>
+                <strong id="score">0</strong>
+            </div>
+
+            <div class="hud-item timer">
+                <span>TIME</span>
+                <strong id="timer">120</strong>
+            </div>
+
+        </div>
+
+
+        <!-- GAME WORLD -->
+
+        <canvas id="canvas"></canvas>
+
+
+        <!-- START SCREEN -->
+
+        <div id="startScreen" class="screen">
+
+            <div class="menu">
+
+                <div class="title-symbol">◈</div>
+
+                <h1>TIME RIFT</h1>
+
+                <p class="subtitle">
+                    Escape the collapsing dimension
+                </p>
+
+                <div class="instructions">
+
+                    <div>
+                        <b>W A S D</b>
+                        <span>Move</span>
+                    </div>
+
+                    <div>
+                        <b>SPACE</b>
+                        <span>Dash</span>
+                    </div>
+
+                    <div>
+                        <b>E</b>
+                        <span>Rift Jump</span>
+                    </div>
+
+                </div>
+
+                <button id="startBtn">
+                    ENTER THE RIFT
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- GAME OVER -->
+
+        <div id="gameOver" class="screen hidden">
+
+            <div class="menu">
+
+                <div class="title-symbol">✦</div>
+
+                <h1>RIFT COLLAPSED</h1>
+
+                <p id="finalMessage">
+                    The dimension consumed you.
+                </p>
+
+                <div class="final-score">
+
+                    <span>FINAL SCORE</span>
+
+                    <strong id="finalScore">0</strong>
+
+                </div>
+
+                <button id="restartBtn">
+                    ENTER AGAIN
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PAUSE -->
+
+        <div id="pauseScreen" class="screen hidden">
+
+            <div class="menu">
+
+                <h1>PAUSED</h1>
+
+                <p>Press ESC to continue</p>
+
+            </div>
+
+        </div>
+
+
+        <!-- NOTIFICATION -->
+
+        <div id="notification"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
